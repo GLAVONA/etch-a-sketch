@@ -3,8 +3,10 @@ const askUserButton = document.createElement("button");
 
 askUserButton.textContent = "Click me!";
 document.body.appendChild(askUserButton);
+container.before(askUserButton);
 
 askUserButton.addEventListener('click',function promptUser(){
+    container.replaceChildren();
     let userRows = prompt("Insert number of rows:", 1);
     let userCols = prompt("Insert number of columns", 1);
 
@@ -14,6 +16,11 @@ askUserButton.addEventListener('click',function promptUser(){
     }
 
     makeGrid(userRows,userCols);
+    const boxes = document.querySelectorAll(".grid-item");
+
+boxes.forEach(box => {
+    box.addEventListener('mouseover',()=>{box.style.backgroundColor = "red"})
+});
 })
 
 function makeGrid(rows, cols){
@@ -25,10 +32,3 @@ function makeGrid(rows, cols){
         container.appendChild(cell).className = "grid-item";  
      }
 }
-
-const boxes = document.querySelectorAll(".grid-item");
-
-boxes.forEach(box => {
-    box.addEventListener('mouseover',()=>{box.style.backgroundColor = "red"})
-});
-
