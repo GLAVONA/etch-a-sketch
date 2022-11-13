@@ -26,7 +26,11 @@ askUserButton.addEventListener('click',function promptUser(){
 boxes.forEach(box => {
     box.addEventListener('mouseover',()=>{
         if(mouseDown){
-            box.style.backgroundColor = "red"}
+            const randomR = Math.floor(Math.random() * 256)
+            const randomG = Math.floor(Math.random() * 256)
+            const randomB = Math.floor(Math.random() * 256)
+            box.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`
+        }
         })
 });
 })
