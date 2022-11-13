@@ -24,12 +24,19 @@ askUserButton.addEventListener('click',function promptUser(){
     const boxes = document.querySelectorAll(".grid-item");
 
 boxes.forEach(box => {
+    let brightness = 0;
+    let randomR = Math.floor(Math.random() * 256)
+    let randomG = Math.floor(Math.random() * 256)
+    let randomB = Math.floor(Math.random() * 256)
     box.addEventListener('mouseover',()=>{
         if(mouseDown){
-            const randomR = Math.floor(Math.random() * 256)
-            const randomG = Math.floor(Math.random() * 256)
-            const randomB = Math.floor(Math.random() * 256)
-            box.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`
+            randomR-=50;
+            randomG-=50;
+            randomB-=50;
+            brightness +=0.1;
+            box.style.background = `rgba(${randomR}, ${randomG}, ${randomB}, ${brightness})`
+            
+            
         }
         })
 });
