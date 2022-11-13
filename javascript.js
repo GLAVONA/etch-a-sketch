@@ -5,6 +5,11 @@ askUserButton.textContent = "Click me!";
 document.body.appendChild(askUserButton);
 container.before(askUserButton);
 
+let mouseDown = false;
+
+document.body.onmousedown = () => (mouseDown=true);
+document.body.onmouseup = () => (mouseDown=false);
+
 askUserButton.addEventListener('click',function promptUser(){
     container.replaceChildren();
     let userRows = prompt("Insert number of rows:", 1);
@@ -19,7 +24,10 @@ askUserButton.addEventListener('click',function promptUser(){
     const boxes = document.querySelectorAll(".grid-item");
 
 boxes.forEach(box => {
-    box.addEventListener('mouseover',()=>{box.style.backgroundColor = "red"})
+    box.addEventListener('mouseover',()=>{
+        if(mouseDown){
+            box.style.backgroundColor = "red"}
+        })
 });
 })
 
